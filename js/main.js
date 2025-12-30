@@ -103,11 +103,6 @@
                             errorMessage += 'An unknown error occurred.';
                     }
                     showError(errorMessage);
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 10000,
-                    maximumAge: 0
                 }
             );
         }
