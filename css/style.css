@@ -1,4 +1,4 @@
-        * {
+  * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -6,10 +6,10 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #e2e8f0;
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
         }
 
         .container {
@@ -19,74 +19,96 @@
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            padding-top: 20px;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             color: #60a5fa;
             margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: clamp(0.875rem, 2vw, 1rem);
         }
 
         .search-box {
             display: flex;
-            gap: 10px;
-            max-width: 500px;
-            margin: 0 auto 40px;
+            gap: 8px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            flex-wrap: wrap;
         }
 
         input {
             flex: 1;
-            padding: 15px 20px;
+            min-width: 200px;
+            padding: 12px 18px;
             border: 2px solid #334155;
             border-radius: 12px;
             background: #1e293b;
             color: #e2e8f0;
-            font-size: 1rem;
+            font-size: clamp(0.875rem, 2vw, 1rem);
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         input:focus {
             border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        input::placeholder {
+            color: #64748b;
         }
 
         button {
-            padding: 15px 30px;
+            padding: 12px 24px;
             background: #60a5fa;
             color: #0f172a;
             border: none;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: clamp(0.875rem, 2vw, 1rem);
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
-        button:hover {
+        button:hover:not(:disabled) {
             background: #3b82f6;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         .current-btn {
             background: #334155;
             color: #e2e8f0;
-            margin-left: 10px;
         }
 
-        .current-btn:hover {
+        .current-btn:hover:not(:disabled) {
             background: #475569;
+            box-shadow: 0 4px 12px rgba(71, 85, 105, 0.3);
         }
 
         .recent-searches {
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto 30px;
         }
 
         .recent-title {
-            font-size: 0.9rem;
+            font-size: clamp(0.813rem, 2vw, 0.9rem);
             color: #94a3b8;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .search-history {
@@ -96,16 +118,16 @@
         }
 
         .history-item {
-            padding: 8px 16px;
+            padding: 8px 14px;
             background: #1e293b;
             border: 1px solid #334155;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: clamp(0.813rem, 2vw, 0.9rem);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .history-item:hover {
@@ -116,7 +138,8 @@
         .history-item .remove {
             color: #ef4444;
             font-weight: bold;
-            margin-left: 5px;
+            font-size: 1.1rem;
+            line-height: 1;
         }
 
         .history-item .remove:hover {
@@ -126,37 +149,40 @@
         .weather-card {
             background: #1e293b;
             border-radius: 20px;
-            padding: 40px;
+            padding: clamp(20px, 4vw, 40px);
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .main-weather {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 30px;
+            flex-wrap: wrap;
         }
 
         .weather-info {
             flex: 1;
+            min-width: 250px;
         }
 
         .city-name {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 8px;
             color: #60a5fa;
+            font-weight: 600;
         }
 
         .temperature {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: bold;
-            margin: 20px 0;
+            margin: 15px 0;
+            line-height: 1;
         }
 
         .description {
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 3vw, 1.5rem);
             text-transform: capitalize;
             color: #94a3b8;
         }
@@ -166,15 +192,15 @@
         }
 
         .weather-icon img {
-            width: 150px;
-            height: 150px;
+            width: clamp(100px, 20vw, 150px);
+            height: clamp(100px, 20vw, 150px);
             filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
         }
 
         .details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             margin-top: 30px;
             padding-top: 30px;
             border-top: 1px solid #334155;
@@ -182,19 +208,25 @@
 
         .detail-item {
             background: #0f172a;
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-3px);
         }
 
         .detail-label {
             color: #94a3b8;
-            font-size: 0.9rem;
+            font-size: clamp(0.813rem, 2vw, 0.9rem);
             margin-bottom: 8px;
+            font-weight: 500;
         }
 
         .detail-value {
-            font-size: 1.5rem;
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
             font-weight: 600;
             color: #e2e8f0;
         }
@@ -204,72 +236,97 @@
         }
 
         .forecast-title {
-            font-size: 1.5rem;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             margin-bottom: 20px;
             color: #60a5fa;
+            font-weight: 600;
         }
 
         .forecast-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
         }
 
         .forecast-card {
             background: #1e293b;
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
         .forecast-card:hover {
             transform: translateY(-5px);
+            border-color: #60a5fa;
+            box-shadow: 0 8px 20px rgba(96, 165, 250, 0.2);
         }
 
         .forecast-day {
             font-weight: 600;
             margin-bottom: 10px;
             color: #60a5fa;
+            font-size: clamp(0.875rem, 2vw, 1rem);
         }
 
         .forecast-icon img {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
         }
 
         .forecast-temp {
             margin-top: 10px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
 
         .error {
             background: #7f1d1d;
             color: #fecaca;
-            padding: 15px;
+            padding: 15px 20px;
             border-radius: 12px;
             text-align: center;
             margin-bottom: 20px;
+            border-left: 4px solid #ef4444;
         }
 
         .loading {
             text-align: center;
             padding: 40px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: #94a3b8;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
         }
 
         .hidden {
             display: none;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
             }
 
-            .temperature {
-                font-size: 3rem;
+            header {
+                margin-bottom: 20px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            button, input {
+                width: 100%;
             }
 
             .main-weather {
@@ -278,6 +335,20 @@
             }
 
             .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .weather-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .forecast-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
